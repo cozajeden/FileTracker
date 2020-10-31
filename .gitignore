@@ -9,6 +9,9 @@ __pycache__/
 # C extensions
 *.so
 
+# vsc
+tempCodeRunnerFile*
+
 # Distribution / packaging
 .Python
 build/

@@ -18,6 +18,7 @@ class Icon(pystray.Icon):
         self.stop_loop()
         self.lock.acquire()
         self.shared['Observer'] = False
+        self.shared['Window'] = False
         self.lock.release()
         super().stop(*args, **kwargs)
 
