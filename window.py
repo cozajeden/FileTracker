@@ -12,6 +12,7 @@ class MyTk(Tk):
         self.thread = Thread(target=self.thread_loop, args=(shared, lock), daemon=False)
         self.thread.start()
         self.alive = True
+        self.withdraw()
 
     def thread_loop(self, shared, lock):
         while True:
@@ -25,17 +26,14 @@ class MyTk(Tk):
                 shared['Window input text'] = None
                 lock.release()
                 self.textVariable.set(inText)
+                self.deiconify()
             sleep(0.05)
-        print('out of loop')
         if self.alive:
             self.after(0, self.destroy)
-        print('after destroy')
 
     def destroy(self):
         self.alive = False
-        print('in')
         self.thread.join()
-        print('out')
         super().destroy()
 
     @classmethod
