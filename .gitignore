@@ -11,7 +11,6 @@ __pycache__/
 
 # temporary files
 tempCodeRunnerFile*
-test_folder/**
 
 # Distribution / packaging
 .Python
