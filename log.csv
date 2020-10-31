@@ -1,0 +1,34 @@
+timestamp,operation,source,destination,size
+2020-10-31 12:40,modified,test_folder\inside_folder,,0
+2020-10-31 12:40,deleted,test_folder\main copy.pyw,,0
+2020-10-31 12:40,created,test_folder\inside_folder\main copy.pyw,,3416
+2020-10-31 12:40,modified,test_folder\inside_folder,,0
+2020-10-31 12:40,modified,test_folder\inside_folder\main copy.pyw,,3416
+2020-10-31 12:40,deleted,test_folder\inside_folder\main copy.pyw,,0
+2020-10-31 12:40,created,test_folder\main copy.pyw,,3416
+2020-10-31 12:40,modified,test_folder\main copy.pyw,,3416
+2020-10-31 12:40,modified,test_folder\inside_folder,,0
+2020-10-31 12:40,deleted,test_folder\main copy.pyw,,0
+2020-10-31 12:40,created,test_folder\inside_folder\main copy.pyw,,3416
+2020-10-31 12:40,modified,test_folder\inside_folder,,0
+2020-10-31 12:40,modified,test_folder\inside_folder\main copy.pyw,,3416
+2020-10-31 12:43,modified,test_folder\inside_folder,,0
+2020-10-31 12:43,deleted,test_folder\main copy.pyw,,0
+2020-10-31 12:43,created,test_folder\inside_folder\main copy.pyw,,3416
+2020-10-31 12:43,modified,test_folder\inside_folder,,0
+2020-10-31 12:43,modified,test_folder\inside_folder\main copy.pyw,,3416
+2020-10-31 12:43,modified,test_folder\inside_folder\main copy.pyw,,3416
+2020-10-31 12:43,modified,test_folder\inside_folder,,0
+2020-10-31 12:43,deleted,test_folder\main copy.pyw,,0
+2020-10-31 12:43,created,test_folder\inside_folder\main copy.pyw,,3416
+2020-10-31 12:43,modified,test_folder\inside_folder,,0
+2020-10-31 12:43,modified,test_folder\inside_folder\main copy.pyw,,3416
+2020-10-31 12:53,created,test_folder\fdf.jj,,0
+2020-10-31 12:53,deleted,test_folder\fdf.jj,,0
+2020-10-31 12:55,created,test_folder\gkl,,0
+2020-10-31 12:55,created,test_folder\hjvg,,0
+2020-10-31 12:55,deleted,test_folder\hjvg,,0
+2020-10-31 13:02,created,test_folder\gf,,0
+2020-10-31 13:06,created,test_folder\dfd,,0
+2020-10-31 13:06,deleted,test_folder\dfd,,0
+2020-10-31 13:09,created,test_folder\dfgd,,0
