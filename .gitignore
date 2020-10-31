@@ -9,8 +9,9 @@ __pycache__/
 # C extensions
 *.so
 
-# vsc
+# temporary files
 tempCodeRunnerFile*
+testfolder/*
 
 # Distribution / packaging
 .Python
