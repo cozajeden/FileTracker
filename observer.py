@@ -60,7 +60,7 @@ class PMEHandler(PatternMatchingEventHandler):
 class MyObserver(Observer):
     
     @classmethod
-    def start_observer(cls, shared, lock, path2scan, path2log, fieldnames):
+    def start_observer(cls, shared, lock):
         observing = False
         observer = None
         while True:
@@ -71,6 +71,11 @@ class MyObserver(Observer):
             if not alive: 
                 break
             if not observing and loop:
+                lock.acquire()
+                path2scan = shared['path2scan']
+                path2log = shared['path2log']
+                fieldnames = shared['fieldnames']
+                lock.release()
                 my_event_handler = PMEHandler(shared, lock, path2log=path2log, fieldnames=fieldnames, patterns='*', ignore_patterns='', ignore_directories=False, case_sensitive=False)
                 observer = cls()
                 observer.schedule(my_event_handler, path=path2scan, recursive=True)
