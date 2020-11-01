@@ -14,7 +14,6 @@ if __name__ == "__main__":
             'Window input text' : None,
             'path2scan'         : 'test_folder',
             'path2log'          : 'log.csv',
-            'fieldnames'        : ['timestamp', 'operation', 'source', 'destination', 'size'],
         })
         processes = [
             Process(name='Tray', target=Icon.start_tray, args=(shared, lock)),

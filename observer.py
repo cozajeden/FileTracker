@@ -4,15 +4,15 @@ from watchdog.events import PatternMatchingEventHandler
 
 
 class PMEHandler(PatternMatchingEventHandler):
-    def __init__(self, shared, lock, path2log, fieldnames, *args, **kwargs) -> None:
+    def __init__(self, shared, lock, path2log, *args, **kwargs) -> None:
         super().__init__(*args, **kwargs)
-        self.fieldnames = fieldnames
+        self.fieldnames = ['timestamp', 'operation', 'source', 'destination', 'size']
         self.path2log = path2log
         self.shared = shared
         self.lock = lock
         if path2log not in os.listdir():
             with open(path2log, 'w', newline ='') as f:
-                writer = csv.DictWriter(f, fieldnames=fieldnames)
+                writer = csv.DictWriter(f, fieldnames=self.fieldnames)
                 writer.writeheader()
 
     def on_created(self, event):
@@ -74,9 +74,8 @@ class MyObserver(Observer):
                 lock.acquire()
                 path2scan = shared['path2scan']
                 path2log = shared['path2log']
-                fieldnames = shared['fieldnames']
                 lock.release()
-                my_event_handler = PMEHandler(shared, lock, path2log=path2log, fieldnames=fieldnames, patterns='*', ignore_patterns='', ignore_directories=False, case_sensitive=False)
+                my_event_handler = PMEHandler(shared, lock, path2log=path2log, patterns='*', ignore_patterns='', ignore_directories=False, case_sensitive=False)
                 observer = cls()
                 observer.schedule(my_event_handler, path=path2scan, recursive=True)
                 observer.start()
