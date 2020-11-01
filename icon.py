@@ -16,6 +16,7 @@ class Icon(pystray.Icon):
 
     def stop(self, *args, **kwargs):
         self.stop_loop()
+        # Send kill signal to other processes
         self.lock.acquire()
         self.shared['Observer'] = False
         self.shared['Window'] = False

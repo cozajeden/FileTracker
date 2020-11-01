@@ -10,6 +10,8 @@ class PMEHandler(PatternMatchingEventHandler):
         self.path2log = path2log
         self.shared = shared
         self.lock = lock
+        # Create the CSV file if doesn't exist
+        # and write heders
         if path2log not in os.listdir():
             with open(path2log, 'w', newline ='') as f:
                 writer = csv.DictWriter(f, fieldnames=self.fieldnames)
@@ -68,8 +70,9 @@ class MyObserver(Observer):
             alive =  shared['Observer']
             loop =  shared['Observer looping']
             lock.release()
-            if not alive: 
-                break
+            if not alive:
+                if loop: loop = False # Stop observer thread before breaking while loop
+                else: break
             if not observing and loop:
                 lock.acquire()
                 path2scan = shared['path2scan']
