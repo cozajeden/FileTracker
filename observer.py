@@ -4,12 +4,15 @@ from watchdog.events import PatternMatchingEventHandler
 
 
 class PMEHandler(PatternMatchingEventHandler):
+    
+    
     def __init__(self, shared, lock, path2log, *args, **kwargs) -> None:
         super().__init__(*args, **kwargs)
         self.fieldnames = ['timestamp', 'operation', 'source', 'destination', 'size']
         self.path2log = path2log
         self.shared = shared
         self.lock = lock
+        
         # Create the CSV file if doesn't exist
         # and write heders
         if path2log not in os.listdir():
@@ -61,18 +64,22 @@ class PMEHandler(PatternMatchingEventHandler):
 
 class MyObserver(Observer):
     
+    
     @classmethod
     def start_observer(cls, shared, lock):
         observing = False
         observer = None
+        
         while True:
             lock.acquire()
             alive =  shared['Observer']
             loop =  shared['Observer looping']
             lock.release()
+            
             if not alive:
                 if loop: loop = False # Stop observer thread before breaking while loop
                 else: break
+                    
             if not observing and loop:
                 lock.acquire()
                 path2scan = shared['path2scan']
@@ -83,8 +90,10 @@ class MyObserver(Observer):
                 observer.schedule(my_event_handler, path=path2scan, recursive=True)
                 observer.start()
                 observing = True
+                
             if observing and not loop:
                 observer.stop()
                 observer.join()
                 observing = False
+                
             time.sleep(1)
